@@ -121,7 +121,7 @@ def logout():
 
 # --- ZONA PROTEGIDA ---
 
-@app.route("/admin")
+@app.route("/negro")
 @login_required
 def admin():
     mensajes = Mensaje.query.order_by(Mensaje.fecha.desc()).all()
