@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Café Aroma</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Panel de administración</h1>
+        <p>Mensajes recibidos</p>
+    </header>
+
+    <main>
+        {% if mensajes %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Mensaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in mensajes %}
+                    <tr>
+                        <td>{{ m.fecha.strftime('%d/%m/%Y %H:%M') }}</td>
+                        <td>{{ m.nombre }}</td>
+                        <td>{{ m.email }}</td>
+                        <td>{{ m.contenido }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No hay mensajes todavía.</p>
+        {% endif %}
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Aroma</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>☕ Café Aroma</h1>
+        <p>El mejor café de barrio, hecho con cariño</p>
+    </header>
+
+    <main>
+        <section class="info">
+            <h2>Sobre nosotros</h2>
+            <p>Llevamos 10 años sirviendo el mejor café de la ciudad. Granos de origen,
+               tostado artesanal y un ambiente acogedor para que disfrutes tu pausa.</p>
+            <p><strong>Horario:</strong> Lunes a sábado, 8:00 - 20:00</p>
+            <p><strong>Dirección:</strong> Calle Falsa 123, Alicante</p>
+        </section>
+
+        <section class="contacto">
+            <h2>Contáctanos</h2>
+
+            {% with mensajes = get_flashed_messages(with_categories=true) %}
+                {% if mensajes %}
+                    {% for categoria, mensaje in mensajes %}
+                        <div class="alerta alerta-{{ categoria }}">{{ mensaje }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form action="{{ url_for('contacto') }}" method="POST">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="contenido">Mensaje</label>
+                <textarea id="contenido" name="contenido" rows="4" required></textarea>
+
+                <button type="submit">Enviar mensaje</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Café Aroma. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

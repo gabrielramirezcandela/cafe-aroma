@@ -1,0 +1,15 @@
+# Entorno virtual de Python
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Variables de entorno y secretos
+.env
+
+# Base de datos local
+local.db
+*.db
+
+# Archivos del sistema
+.DS_Store
